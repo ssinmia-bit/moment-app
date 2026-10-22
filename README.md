@@ -6,7 +6,11 @@
 
 ## 🌿 바로 사용하기
 
-### 👉 [모먼트 앱 열기](https://ssinmia-bit.github.io/moment-app/)
+### 👉 [모먼트 앱 열기 — Vercel](https://moment-app-theta.vercel.app/)
+
+[GitHub Pages에서도 사용하기](https://ssinmia-bit.github.io/moment-app/)
+
+두 주소는 같은 앱을 제공하지만, 저장된 할 일과 메모는 주소별로 따로 관리됩니다.
 
 위 링크는 **실제로 사용하는 앱 화면**입니다. 지금 보고 있는 GitHub 페이지는 앱의 소스 코드와 사용 설명서를 보관하는 곳입니다.
 
@@ -122,7 +126,7 @@ moment-app/
 
 ### 수정한 내용을 GitHub와 앱에 반영하기
 
-이 저장소는 GitHub Pages를 통해 배포되어 있습니다. `main` 브랜치에 수정 내용을 푸시하면 배포가 자동으로 시작됩니다.
+이 저장소는 GitHub Pages와 Vercel에 배포되어 있습니다. **GitHub Pages는** `main` 브랜치에 수정 내용을 푸시하면 배포가 자동으로 시작됩니다.
 
 Git과 GitHub CLI가 설치되어 있고 로그인이 완료된 컴퓨터에서, 프로젝트 폴더의 터미널을 열어 실행하세요.
 
@@ -146,6 +150,24 @@ git push
 
 배포 설정은 **Settings → Pages → Deploy from a branch → `main` / `/ (root)`**입니다.
 
+### Vercel 배포
+
+Vercel 프로젝트 이름은 `moment-app`이며, 앱 주소는 **https://moment-app-theta.vercel.app/** 입니다. 빌드 과정 없이 HTML 파일을 제공하도록 `vercel.json`에 설정되어 있습니다.
+
+현재 Vercel 배포는 CLI로 수행합니다. Vercel CLI 설치와 로그인, 프로젝트 연결이 완료된 이 프로젝트 폴더에서 다음 명령을 실행하면 수정한 앱을 배포할 수 있습니다.
+
+```powershell
+vercel deploy --prod
+```
+
+GitHub에 푸시하는 것과 Vercel CLI로 배포하는 것은 별도 작업입니다. GitHub 자동 배포를 사용하려면 Vercel 계정 설정의 **Login Connections**에서 GitHub 계정을 연결한 뒤, 다음 명령으로 저장소도 연결해야 합니다. Vercel GitHub 앱의 저장소 접근 권한 승인이 추가로 필요할 수 있습니다.
+
+```powershell
+vercel git connect https://github.com/ssinmia-bit/moment-app --yes
+```
+
+연결 완료 후에는 `main` 브랜치에 푸시할 때 Vercel 프로덕션 배포도 자동으로 실행됩니다. Vercel의 로컬 프로젝트 설정과 환경 변수 파일은 `.gitignore` 및 `.vercelignore`로 업로드에서 제외합니다.
+
 ## ❓ 자주 묻는 질문
 
 **날씨가 표시되지 않아요.**
@@ -162,4 +184,4 @@ git push
 
 **앱을 수정했는데 사이트가 그대로예요.**
 
-`git push`까지 완료했는지, Actions에서 최신 배포가 성공했는지 확인한 뒤 브라우저를 강력 새로고침해 주세요.
+접속한 주소를 먼저 확인해 주세요. GitHub Pages는 `git push`와 Actions의 배포 성공 여부를 확인하고, Vercel은 CLI 배포 또는 연결된 GitHub 자동 배포가 성공했는지 확인합니다. 배포 완료 후 브라우저를 강력 새로고침해 주세요.
