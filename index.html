@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f5f7">
+  <title>모먼트 — 나의 작은 작업실</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
+    :root{--bg:#f4f5f7;--card:#fff;--text:#242b38;--muted:#8b919d;--line:#edf0f4;--purple:#7765db;--purple-light:#f0edfc;--green:#6b9d86;--shadow:0 5px 24px #252e4e04}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans','Noto Sans KR',sans-serif;font-size:14px}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #bcb1f4;outline-offset:3px}button{transition:background .18s,transform .18s}button:active{transform:scale(.97)}
+    .shell{max-width:1440px;margin:auto;padding:0 58px}header{height:98px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6e8ee}.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:800;letter-spacing:-1px}.brand-mark{display:grid;grid-template-columns:repeat(2,7px);gap:3px;transform:rotate(-12deg)}.brand-mark i{width:7px;height:11px;border-radius:3px;background:var(--purple)}.brand-mark i:nth-child(2){opacity:.45}.brand-mark i:nth-child(3){opacity:.7}.header-right{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:12px}.live-dot{width:6px;height:6px;border-radius:50%;background:#89ad95;display:inline-block;margin-right:7px}.avatar{display:grid;place-items:center;background:#e9e4da;color:#7d7669;width:34px;height:34px;border:3px solid #fff;border-radius:50%;font-weight:700;font-size:12px}
+    main{padding:43px 0 24px}.intro{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:31px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:700;color:var(--purple);margin-bottom:11px}h1{font-size:29px;letter-spacing:-1.3px;margin:0 0 10px;font-weight:700}.intro p{margin:0;color:var(--muted);font-size:13px}.date-clock{text-align:right}.date-clock strong{font-size:29px;letter-spacing:-1px;font-weight:500;font-variant-numeric:tabular-nums}.date-clock span{display:block;color:var(--muted);font-size:11px;margin-top:5px}.grid{display:grid;grid-template-columns:1fr 1.04fr 1fr;gap:22px;align-items:start}.column{display:grid;gap:22px}.card{background:var(--card);border:1px solid #eceef3;border-radius:19px;box-shadow:var(--shadow);padding:24px}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.heading{display:flex;align-items:center;gap:9px}h2{margin:0;font-size:14px;font-weight:700;letter-spacing:-.4px}.icon{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#f4f3fa;color:var(--purple);font-size:15px}.micro{font-size:10px;color:var(--muted)}.tag{font-size:10px;color:var(--purple);background:var(--purple-light);padding:5px 8px;border-radius:6px}.weather{background:linear-gradient(135deg,#edf3fc,#edf1fb 55%,#f3effa);border-color:#e6eaf5;position:relative;overflow:hidden;min-height:330px}.weather .icon{background:#ffffff8c;color:#6b82ae}.location-btn{border:0;background:#ffffff80;border-radius:7px;padding:6px 9px;color:#64708c;font-size:11px}.weather-main{display:flex;justify-content:space-between;align-items:center;margin-top:30px}.temperature{font-size:62px;font-weight:500;letter-spacing:-4px;line-height:1.1}.temperature sup{font-size:28px;vertical-align:top;position:relative;top:7px;letter-spacing:-1px}.weather-desc{font-size:13px;color:#71809b;margin-top:8px}.weather-art{width:105px;height:95px;position:relative;margin-right:4px}.sun{position:absolute;top:2px;right:6px;width:61px;height:61px;border-radius:50%;background:linear-gradient(145deg,#ffdf8c,#f8bd61);box-shadow:0 0 40px #ffd67a65}.cloud{position:absolute;bottom:11px;left:0;width:97px;height:34px;background:linear-gradient(#fff,#f4f7fe);border-radius:30px;filter:drop-shadow(0 6px 6px #9faec52b)}.cloud:before,.cloud:after{content:'';position:absolute;background:#fff;border-radius:50%}.cloud:before{width:45px;height:45px;left:15px;top:-24px}.cloud:after{width:32px;height:32px;right:11px;top:-14px}.weather-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:25px;padding-top:18px;border-top:1px solid #dce3f0}.weather-stats div+div{border-left:1px solid #dce3f0;padding-left:17px}.weather-stats span{display:block;font-size:10px;color:#8793aa;margin-bottom:6px}.weather-stats strong{font-size:12px;color:#5d6c86;font-weight:500}.weather-status{font-size:10px;color:#8a97ad;margin-top:16px;min-height:15px}.city-search{display:flex;gap:6px;margin-top:14px}.city-search[hidden]{display:none}.city-search input{width:100%;min-width:0;border:1px solid #d8dfef;background:#ffffffa8;border-radius:7px;padding:8px}.city-search button{background:#6c7caa;border:0;border-radius:7px;color:white;white-space:nowrap;padding:0 10px}
+    .calculator{padding-bottom:21px}.calc-display{margin:23px 0 18px;text-align:right;background:#f7f8fa;border:1px solid #f0f1f4;border-radius:11px;padding:14px 18px;min-height:98px;display:flex;flex-direction:column;justify-content:center}.calc-history{color:#a0a6b1;font-size:12px;min-height:20px;overflow-wrap:anywhere}.calc-value{font-size:34px;font-weight:500;letter-spacing:-1px;overflow-wrap:anywhere;line-height:1.45}.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.calc-keys button{height:49px;border:0;border-radius:10px;background:#f5f6f8;font-size:17px;color:#424956}.calc-keys button:hover{background:#eaeaf3}.calc-keys .utility{background:#eeedf4;color:#8c83a8;font-size:14px}.calc-keys .operator{background:var(--purple-light);color:var(--purple);font-size:21px}.calc-keys .equals{background:var(--purple);color:white;box-shadow:0 4px 10px #7765db22}.calc-keys .zero{grid-column:span 2}.calc-hint{text-align:center;font-size:10px;color:#a6abb5;margin-top:16px}
+    .todo{min-height:330px}.count{color:#aaa5bc;font-size:11px;font-weight:400;margin-left:5px}.task-input{display:flex;margin-top:22px;background:#f7f8fa;border:1px solid #eceef2;border-radius:9px;align-items:center;padding-right:7px}.task-input input{min-width:0;width:100%;background:none;border:0;padding:12px;font-size:11px;color:var(--text)}input::placeholder{color:#a3a8b2}.add-btn{flex-shrink:0;width:25px;height:25px;background:#ebe7fa;color:var(--purple);border:0;border-radius:6px;font-size:19px;line-height:1}.task-list{list-style:none;padding:0;margin:11px 0 0}.task{display:flex;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid #f2f3f6;font-size:12px}.task:last-child{border-bottom:0}.task input{appearance:none;flex-shrink:0;width:16px;height:16px;border:1.5px solid #dce0e7;border-radius:5px;margin:0;cursor:pointer;display:grid;place-items:center}.task input:checked{background:#e8e3fa;border-color:#e8e3fa}.task input:checked:after{content:'✓';color:var(--purple);font-size:11px}.task.done .task-text{text-decoration:line-through;color:#b4b8c1}.task-text{flex:1;overflow-wrap:anywhere;min-width:0}.delete-task{border:0;background:none;color:#b1b5bf;font-size:17px;opacity:0;padding:0 3px}.task:hover .delete-task,.delete-task:focus-visible{opacity:1}.task-footer{display:flex;justify-content:space-between;font-size:10px;color:#a5aab5;margin-top:18px}.clear-tasks{font-size:10px;background:none;border:0;color:#9c97ad;padding:0}.empty{color:var(--muted);font-size:12px;text-align:center;padding:25px 0}
+    .focus-card{text-align:center}.focus-card .card-head{text-align:left}.timer-modes{display:flex;justify-content:center;gap:6px;margin-top:22px}.timer-modes button{font-size:10px;border:0;background:none;color:#a2a6b0;padding:6px 12px;border-radius:6px}.timer-modes .selected{background:var(--purple-light);color:var(--purple)}.timer{font-size:54px;letter-spacing:-2px;font-weight:500;line-height:1.2;margin-top:15px;font-variant-numeric:tabular-nums}.timer-caption{font-size:11px;color:#a2a6b0;margin-top:7px}.timer-actions{display:flex;justify-content:center;gap:9px;margin-top:21px}.primary{background:var(--purple);border:0;border-radius:8px;color:white;font-size:12px;padding:11px 36px}.primary:hover{background:#6856cc}.reset{border:1px solid #e9eaf0;background:white;border-radius:8px;width:37px;color:#979ca8;font-size:20px}.focus-bottom{border-top:1px solid var(--line);margin-top:22px;padding-top:15px;color:#a4a9b3;font-size:10px}.focus-bottom strong{color:var(--purple);font-weight:600}.notes{background:#fbf7ed;border-color:#f0ecdf;min-height:181px;position:relative}.notes .icon{color:#b09a65;background:#f3ecd9}.notes textarea{resize:vertical;min-height:77px;width:100%;border:0;background:none;margin-top:16px;color:#8e836c;font:12px/1.9 'Noto Sans KR',sans-serif;outline-color:#d7c393}.notes textarea::placeholder{color:#b2a893}.saved{font-size:9px;color:#b0a790;position:absolute;right:23px;bottom:14px}.quote{border-radius:15px;padding:22px 25px;background:#edeaf5;position:relative;overflow:hidden;min-height:130px}.quote-mark{font-family:Georgia,serif;font-size:58px;line-height:.7;color:#c9c1e0}.quote p{margin:9px 0;color:#6c6283;font-size:12px;font-weight:500;line-height:1.8}.quote span{color:#a49ab6;font-size:9px;letter-spacing:1.1px}.bottom-bar{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:17px;border-top:1px solid #e6e8ee;color:#aaaeba;font-size:10px}.bottom-bar b{font-weight:500;color:#8c859f}.storage-warning{color:#b17b45;display:none;margin-top:15px;font-size:11px}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);padding:12px 22px;background:#353044;color:white;border-radius:10px;box-shadow:0 6px 25px #0002;font-size:13px;z-index:10}.toast[hidden]{display:none}
+    @media(min-width:1450px){main{padding-top:52px}.grid{gap:25px}.column{gap:25px}.card{padding:27px}.calc-keys button{height:55px}.weather{min-height:345px}.todo{min-height:345px}}
+    @media(max-width:1050px){.shell{padding:0 28px}.grid{grid-template-columns:1fr 1fr}.column:nth-child(3){grid-column:1 / -1;grid-template-columns:1fr 1fr}.todo{min-height:330px}.header-right>span{display:none}}
+    @media(max-width:640px){.shell{padding:0 19px}header{height:76px}main{padding-top:29px}.intro{align-items:flex-start;gap:10px;margin-bottom:24px}h1{font-size:23px}.intro p{font-size:11px;line-height:1.8;max-width:190px}.date-clock strong{font-size:23px}.date-clock span{font-size:9px;max-width:100px;line-height:1.6}.eyebrow{font-size:9px}.grid{grid-template-columns:1fr;gap:17px}.column{gap:17px}.column:nth-child(3){grid-column:auto;grid-template-columns:1fr}.card{padding:23px}.delete-task{opacity:1}.bottom-bar{line-height:1.8;gap:20px;align-items:flex-start;margin-bottom:10px}.bottom-bar>span:last-child{text-align:right}.weather{min-height:320px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>모먼트<span style="font-size:10px;font-weight:400;color:#a1a5b1;letter-spacing:.3px;margin-left:7px">moment</span></div>
+      <div class="header-right"><span><i class="live-dot"></i>나에게 집중하는 작은 공간</span><div class="avatar" aria-label="나의 작업실">M</div></div>
+    </header>
+    <main>
+      <section class="intro">
+        <div><div class="eyebrow">YOUR EVERYDAY WORKSPACE</div><h1 id="greeting">좋은 하루예요 ☀️</h1><p>가볍게 시작하고, 나만의 속도로 채워가세요.</p></div>
+        <div class="date-clock"><strong id="clock">00:00</strong><span id="date"></span></div>
+      </section>
+      <div class="grid">
+        <div class="column">
+          <section class="card weather" aria-labelledby="weather-title">
+            <div class="card-head"><div class="heading"><span class="icon" aria-hidden="true">☀</span><h2 id="weather-title">오늘의 날씨</h2></div><button class="location-btn" id="location-toggle" aria-expanded="false">⌖ <span id="city-name">서울</span> ⌄</button></div>
+            <form class="city-search" id="city-form" hidden><input id="city-input" aria-label="날씨를 검색할 도시" placeholder="도시 이름 (예: 서울, 부산)" required maxlength="60"><button type="submit">검색</button></form>
+            <div class="weather-main"><div><div class="temperature"><span id="temp">--</span><sup>°</sup></div><div class="weather-desc" id="weather-desc">날씨를 불러오는 중</div></div><div class="weather-art" aria-hidden="true"><div class="sun"></div><div class="cloud"></div></div></div>
+            <div class="weather-stats"><div><span>체감 온도</span><strong id="feels">--°</strong></div><div><span>습도</span><strong id="humidity">--%</strong></div><div><span>풍속</span><strong id="wind">-- m/s</strong></div></div>
+            <div class="weather-status" id="weather-status" role="status">Open-Meteo · 실시간 기상 정보</div>
+          </section>
+          <section class="card focus-card" aria-labelledby="focus-title">
+            <div class="card-head"><div class="heading"><span class="icon" aria-hidden="true">◷</span><h2 id="focus-title">집중 타이머</h2></div><span class="micro">한 번에 하나씩</span></div>
+            <div class="timer-modes" role="group" aria-label="타이머 모드"><button class="selected" data-minutes="25" aria-pressed="true">집중</button><button data-minutes="5" aria-pressed="false">짧은 휴식</button><button data-minutes="15" aria-pressed="false">긴 휴식</button></div>
+            <div class="timer" id="timer" role="timer" aria-label="남은 시간">25:00</div><div class="timer-caption" id="timer-caption">잠시, 눈앞의 일에만 집중해요.</div>
+            <div class="timer-actions"><button class="primary" id="timer-start">집중 시작 <span aria-hidden="true">▷</span></button><button class="reset" id="timer-reset" aria-label="타이머 초기화">↻</button></div>
+            <div class="focus-bottom">오늘의 집중 <strong id="focus-count">0</strong>회 <span style="margin:0 8px;color:#ddd">·</span> 작은 몰입이 큰 변화를 만들어요</div>
+          </section>
+        </div>
+        <div class="column">
+          <section class="card calculator" aria-labelledby="calc-title">
+            <div class="card-head"><div class="heading"><span class="icon" aria-hidden="true">▦</span><h2 id="calc-title">계산기</h2></div><span class="tag">QUICK MATH</span></div>
+            <div class="calc-display"><div class="calc-history" id="calc-history"></div><output class="calc-value" id="calc-value" aria-live="polite">0</output></div>
+            <div class="calc-keys" id="calc-keys">
+              <button class="utility" data-key="AC">AC</button><button class="utility" data-key="sign" aria-label="양수 음수 전환">+/−</button><button class="utility" data-key="%">%</button><button class="operator" data-key="/" aria-label="나누기">÷</button>
+              <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button><button class="operator" data-key="*" aria-label="곱하기">×</button>
+              <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button><button class="operator" data-key="-" aria-label="빼기">−</button>
+              <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button><button class="operator" data-key="+" aria-label="더하기">+</button>
+              <button class="zero" data-key="0">0</button><button data-key=".">.</button><button class="equals" data-key="=" aria-label="계산 결과">=</button>
+            </div>
+            <div class="calc-hint">키보드로도 편하게 계산해 보세요 ↵</div>
+          </section>
+          <aside class="quote"><div class="quote-mark" aria-hidden="true">“</div><p>위대한 일은 작은 일들이 모여 이루어집니다.</p><span>ONE SMALL STEP AT A TIME</span></aside>
+        </div>
+        <div class="column">
+          <section class="card todo" aria-labelledby="todo-title">
+            <div class="card-head"><div class="heading"><span class="icon" aria-hidden="true">✓</span><h2 id="todo-title">오늘의 할 일 <span class="count" id="task-count">0</span></h2></div><span class="micro" id="task-progress">0% 완료</span></div>
+            <form class="task-input" id="task-form"><input id="task-input" placeholder="어떤 일을 해볼까요?" aria-label="새 할 일" maxlength="150" required><button class="add-btn" aria-label="할 일 추가">+</button></form>
+            <ul class="task-list" id="task-list"></ul>
+            <div class="task-footer"><span id="task-remaining">할 일을 추가해 보세요</span><button class="clear-tasks" id="clear-tasks">완료 항목 지우기</button></div>
+          </section>
+          <section class="card notes" aria-labelledby="notes-title"><div class="card-head"><div class="heading"><span class="icon" aria-hidden="true">✎</span><h2 id="notes-title">작은 메모</h2></div><span class="micro" style="color:#b1a68e">잊기 전에, 살짝</span></div><textarea id="notes" aria-label="작은 메모" placeholder="문득 떠오른 생각이나 기억할 것들을 적어보세요." maxlength="10000"></textarea><span class="saved" id="note-saved">이 기기에 자동 저장</span></section>
+        </div>
+      </div>
+      <div class="storage-warning" id="storage-warning" role="status">브라우저 저장소를 사용할 수 없어 변경 내용이 새로고침 후 유지되지 않을 수 있어요.</div>
+      <footer class="bottom-bar"><span><b>moment</b> &nbsp; 일상에 여유를, 하루에 집중을.</span><span>당신의 속도로, 충분히 잘하고 있어요 <span style="color:#aaa0c9">✦</span></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    function load(key, fallback) { try { return JSON.parse(localStorage.getItem('moment-' + key)) ?? fallback; } catch { return fallback; } }
+    function save(key, value) { try { localStorage.setItem('moment-' + key, JSON.stringify(value)); return true; } catch { $('storage-warning').style.display = 'block'; return false; } }
+    let toastTimeout;
+    function toast(message) { $('toast').textContent = message; $('toast').hidden = false; clearTimeout(toastTimeout); toastTimeout = setTimeout(() => $('toast').hidden = true, 4000); }
+    function tickClock() {
+      const now = new Date();
+      $('clock').textContent = now.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false });
+      $('date').textContent = now.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+      const h = now.getHours();
+      $('greeting').textContent = h < 6 ? '고요한 새벽이에요 🌙' : h < 12 ? '좋은 아침이에요 ☀️' : h < 18 ? '좋은 오후예요 🌿' : '편안한 저녁이에요 🌙';
+    }
+    tickClock(); setInterval(tickClock, 1000);
+
+    // Calculator: sequential arithmetic, without executing user-provided code.
+    let value = '0', previous = null, operation = null, fresh = false;
+    const symbols = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+    function paintCalc() { $('calc-value').textContent = value; }
+    function calculate(a, b, op) {
+      let result;
+      if (op === '+') result = a + b;
+      if (op === '-') result = a - b;
+      if (op === '*') result = a * b;
+      if (op === '/') result = b === 0 ? NaN : a / b;
+      return Number.isFinite(result) ? String(Number(result.toPrecision(12))) : '오류';
+    }
+    function calc(key) {
+      if (key === 'AC') { value = '0'; previous = null; operation = null; fresh = false; $('calc-history').textContent = ''; }
+      else if (/^\d$/.test(key) || key === '.') {
+        if (fresh || value === '오류') { value = '0'; fresh = false; }
+        if (key === '.') { if (!value.includes('.')) value += '.'; }
+        else if (value.replace(/[-.]/g, '').length < 12) value = value === '0' ? key : value + key;
+      } else if (key === 'Backspace') { if (!fresh && value !== '오류') value = value.length > 1 ? value.slice(0, -1) : '0'; if (value === '-') value = '0'; }
+      else if (key === 'sign' && value !== '오류') value = String(-Number(value));
+      else if (key === '%' && value !== '오류') value = String(Number((Number(value) / 100).toPrecision(12)));
+      else if (symbols[key] && value !== '오류') {
+        if (operation && !fresh) value = calculate(previous, Number(value), operation);
+        if (value === '오류') { previous = null; operation = null; }
+        else { previous = Number(value); operation = key; $('calc-history').textContent = value + ' ' + symbols[key]; }
+        fresh = true;
+      } else if (key === '=' && operation && value !== '오류') {
+        $('calc-history').textContent = previous + ' ' + symbols[operation] + ' ' + value + ' =';
+        value = calculate(previous, Number(value), operation); previous = null; operation = null; fresh = true;
+      }
+      paintCalc();
+    }
+    $('calc-keys').addEventListener('click', e => { const button = e.target.closest('[data-key]'); if (button) calc(button.dataset.key); });
+    document.addEventListener('keydown', e => {
+      if (e.target.closest('input, textarea, select, [contenteditable="true"]') || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.target.closest('button') && (e.key === 'Enter' || e.key === ' ')) return;
+      const key = e.key === 'Enter' ? '=' : e.key === 'Escape' ? 'AC' : e.key;
+      if (/^[0-9.+*/%=\-]$/.test(key) || ['AC', 'Backspace', '='].includes(key)) { e.preventDefault(); calc(key); }
+    });
+
+    let tasks = load('tasks', []);
+    if (!Array.isArray(tasks)) tasks = [];
+    tasks = tasks.filter(t => t && typeof t.text === 'string').map(t => ({ text: t.text.slice(0, 150), done: !!t.done }));
+    function renderTasks() {
+      $('task-list').replaceChildren();
+      if (!tasks.length) { const empty = document.createElement('li'); empty.className = 'empty'; empty.textContent = '작은 할 일 하나로 시작해 볼까요?'; $('task-list').append(empty); }
+      tasks.forEach((task, i) => {
+        const li = document.createElement('li'); li.className = 'task' + (task.done ? ' done' : '');
+        const check = document.createElement('input'); check.type = 'checkbox'; check.checked = task.done; check.setAttribute('aria-label', task.text + ' 완료');
+        check.addEventListener('change', () => { tasks[i].done = check.checked; save('tasks', tasks); renderTasks(); $('task-list').querySelectorAll('input')[i]?.focus(); });
+        const text = document.createElement('span'); text.className = 'task-text'; text.textContent = task.text;
+        const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'delete-task'; remove.textContent = '×'; remove.setAttribute('aria-label', task.text + ' 삭제');
+        remove.addEventListener('click', () => { tasks.splice(i, 1); save('tasks', tasks); renderTasks(); $('task-input').focus(); });
+        li.append(check, text, remove); $('task-list').append(li);
+      });
+      const completed = tasks.filter(t => t.done).length;
+      $('task-count').textContent = tasks.length;
+      $('task-progress').textContent = (tasks.length ? Math.round(completed / tasks.length * 100) : 0) + '% 완료';
+      $('task-remaining').textContent = tasks.length ? tasks.length - completed + '개의 할 일이 남았어요' : '할 일을 추가해 보세요';
+    }
+    $('task-form').addEventListener('submit', e => { e.preventDefault(); const text = $('task-input').value.trim(); if (!text) return; tasks.push({ text, done: false }); save('tasks', tasks); $('task-input').value = ''; renderTasks(); });
+    $('clear-tasks').addEventListener('click', () => { tasks = tasks.filter(t => !t.done); save('tasks', tasks); renderTasks(); });
+    renderTasks();
+    const storedNote = load('notes', ''); $('notes').value = typeof storedNote === 'string' ? storedNote : '';
+    $('notes').addEventListener('input', () => { $('note-saved').textContent = save('notes', $('notes').value) ? '저장되었어요 ✓' : '저장할 수 없어요'; });
+
+    let modeMinutes = 25, remaining = 25 * 60, deadline = null, running = false;
+    const todayKey = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
+    let sessions = load('focus', { day: todayKey(), count: 0 });
+    if (!sessions || sessions.day !== todayKey() || !Number.isInteger(sessions.count) || sessions.count < 0) sessions = { day: todayKey(), count: 0 };
+    $('focus-count').textContent = sessions.count;
+    function paintTimer() {
+      $('timer').textContent = String(Math.floor(remaining / 60)).padStart(2, '0') + ':' + String(remaining % 60).padStart(2, '0');
+      $('timer-start').textContent = running ? '일시 정지 Ⅱ' : remaining === modeMinutes * 60 ? (modeMinutes === 25 ? '집중 시작 ▷' : '휴식 시작 ▷') : '이어서 시작 ▷';
+    }
+    function updateTimer() {
+      if (sessions.day !== todayKey()) { sessions = { day: todayKey(), count: 0 }; save('focus', sessions); $('focus-count').textContent = 0; }
+      if (!running) return;
+      remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      if (remaining === 0) {
+        running = false;
+        if (modeMinutes === 25) { sessions.count++; save('focus', sessions); $('focus-count').textContent = sessions.count; }
+        toast(modeMinutes === 25 ? '잘했어요! 집중을 마쳤어요. 잠깐 쉬어가세요 🌿' : '휴식 끝! 새로운 마음으로 시작해 볼까요?');
+        $('timer-caption').textContent = '완료했어요. 다시 시작할 수 있어요.';
+        remaining = modeMinutes * 60;
+      }
+      paintTimer();
+    }
+    $('timer-start').addEventListener('click', () => { if (running) updateTimer(); running = !running; if (running) deadline = Date.now() + remaining * 1000; paintTimer(); });
+    $('timer-reset').addEventListener('click', () => { running = false; remaining = modeMinutes * 60; paintTimer(); });
+    document.querySelectorAll('[data-minutes]').forEach(button => button.addEventListener('click', () => {
+      running = false; modeMinutes = Number(button.dataset.minutes); remaining = modeMinutes * 60;
+      document.querySelectorAll('[data-minutes]').forEach(b => { b.classList.toggle('selected', b === button); b.setAttribute('aria-pressed', String(b === button)); });
+      $('timer-caption').textContent = modeMinutes === 25 ? '잠시, 눈앞의 일에만 집중해요.' : '어깨를 펴고, 가볍게 쉬어가세요.'; paintTimer();
+    }));
+    setInterval(updateTimer, 250); document.addEventListener('visibilitychange', updateTimer);
+
+    // Weather requires an internet connection; no API key or location permission needed.
+    let city = load('city', { name: '서울', latitude: 37.5665, longitude: 126.978 });
+    if (!city || typeof city.name !== 'string' || !Number.isFinite(city.latitude) || !Number.isFinite(city.longitude) || Math.abs(city.latitude) > 90 || Math.abs(city.longitude) > 180) city = { name: '서울', latitude: 37.5665, longitude: 126.978 };
+    let weatherRequest = 0, searchRequest = 0;
+    function weatherLabel(code) {
+      if (code === 0) return '맑고 화창해요'; if (code <= 2) return '구름이 조금 있어요'; if (code === 3) return '흐린 하늘이에요'; if (code <= 48) return '안개가 끼어 있어요'; if (code <= 67) return '비가 내려요'; if (code <= 77) return '눈이 내려요'; if (code <= 82) return '소나기가 내려요'; if (code <= 86) return '눈 소나기가 내려요'; return '천둥번개에 주의하세요';
+    }
+    async function getJSON(url) {
+      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 12000);
+      try { const response = await fetch(url, { signal: controller.signal }); if (!response.ok) throw new Error('HTTP ' + response.status); return await response.json(); } finally { clearTimeout(timeout); }
+    }
+    async function fetchWeather() {
+      const request = ++weatherRequest;
+      $('city-name').textContent = city.name; $('weather-status').textContent = '최신 날씨를 확인하고 있어요…';
+      $('temp').textContent = '--'; $('weather-desc').textContent = '날씨를 불러오는 중'; $('feels').textContent = '--°'; $('humidity').textContent = '--%'; $('wind').textContent = '-- m/s';
+      try {
+        const data = await getJSON(`https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&wind_speed_unit=ms&timezone=auto`);
+        if (request !== weatherRequest) return;
+        const c = data.current;
+        if (!c || !['temperature_2m','relative_humidity_2m','apparent_temperature','weather_code','wind_speed_10m'].every(key => Number.isFinite(c[key]))) throw new Error('Invalid weather');
+        $('temp').textContent = Math.round(c.temperature_2m); $('weather-desc').textContent = weatherLabel(c.weather_code);
+        $('feels').textContent = Math.round(c.apparent_temperature) + '°'; $('humidity').textContent = c.relative_humidity_2m + '%'; $('wind').textContent = c.wind_speed_10m.toFixed(1) + ' m/s';
+        document.querySelector('.sun').style.opacity = c.weather_code <= 2 ? '1' : '.25';
+        document.querySelector('.cloud').style.opacity = c.weather_code === 0 ? '.35' : '1';
+        $('weather-status').textContent = 'Open-Meteo · ' + new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' 업데이트';
+      } catch { if (request !== weatherRequest) return; $('weather-desc').textContent = '날씨를 불러오지 못했어요'; $('weather-status').textContent = '인터넷 연결을 확인해 주세요 · 도시 검색으로 재시도'; }
+    }
+    $('location-toggle').addEventListener('click', () => { const show = $('city-form').hidden; $('city-form').hidden = !show; $('location-toggle').setAttribute('aria-expanded', String(show)); if (show) $('city-input').focus(); });
+    $('city-form').addEventListener('submit', async e => {
+      e.preventDefault(); const name = $('city-input').value.trim(); if (!name) return;
+      const request = ++searchRequest; $('weather-status').textContent = '도시를 찾는 중이에요…';
+      try {
+        const data = await getJSON('https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(name) + '&count=1&language=ko&format=json');
+        if (request !== searchRequest) return;
+        if (!data.results?.length) { $('weather-status').textContent = '도시를 찾지 못했어요. 다른 이름으로 검색해 주세요.'; return; }
+        const result = data.results[0]; city = { name: result.name, latitude: result.latitude, longitude: result.longitude }; save('city', city);
+        $('city-form').hidden = true; $('location-toggle').setAttribute('aria-expanded', 'false'); $('city-input').value = ''; $('location-toggle').focus(); await fetchWeather();
+      } catch { if (request === searchRequest) $('weather-status').textContent = '도시 검색에 실패했어요. 인터넷 연결을 확인해 주세요.'; }
+    });
+    fetchWeather(); setInterval(fetchWeather, 15 * 60 * 1000);
+  </script>
+</body>
+</html>
