@@ -117,6 +117,8 @@ Node.js나 별도의 프로그램 설치, 빌드 작업은 필요하지 않습�
 moment-app/
 ├── index.html   # 앱 화면, 디자인, 기능이 들어 있는 파일
 ├── README.md    # 지금 읽고 있는 사용 설명서
+├── vercel.json  # Vercel 정적 사이트 배포 설정
+├── .vercelignore # Vercel에 올리지 않을 파일 규칙
 └── .gitignore   # Git에 올리지 않을 파일 규칙
 ```
 
@@ -126,7 +128,7 @@ moment-app/
 
 ### 수정한 내용을 GitHub와 앱에 반영하기
 
-이 저장소는 GitHub Pages와 Vercel에 배포되어 있습니다. **GitHub Pages는** `main` 브랜치에 수정 내용을 푸시하면 배포가 자동으로 시작됩니다.
+이 저장소는 GitHub Pages와 Vercel에 배포되어 있습니다. **두 서비스 모두** `main` 브랜치에 수정 내용을 푸시하면 배포가 자동으로 시작됩니다.
 
 Git과 GitHub CLI가 설치되어 있고 로그인이 완료된 컴퓨터에서, 프로젝트 폴더의 터미널을 열어 실행하세요.
 
@@ -146,7 +148,7 @@ git push
 
 `커밋`은 변경 내용을 기록하는 것이고, `푸시`는 그 기록을 GitHub에 올리는 것입니다. 비밀번호나 API 키 같은 민감한 정보는 커밋하지 마세요.
 
-배포 진행 상황은 저장소의 **[Actions 탭](https://github.com/ssinmia-bit/moment-app/actions)**에서 확인할 수 있습니다. 배포 완료 후에도 이전 화면이 보인다면 `Ctrl + Shift + R`로 강력 새로고침해 보세요.
+GitHub Pages의 배포 진행 상황은 저장소의 **[Actions 탭](https://github.com/ssinmia-bit/moment-app/actions)**에서, Vercel은 **[프로젝트 대시보드](https://vercel.com/a01087631345-1226/moment-app)**에서 확인할 수 있습니다. 배포 완료 후에도 이전 화면이 보인다면 `Ctrl + Shift + R`로 강력 새로고침해 보세요.
 
 배포 설정은 **Settings → Pages → Deploy from a branch → `main` / `/ (root)`**입니다.
 
@@ -154,19 +156,15 @@ git push
 
 Vercel 프로젝트 이름은 `moment-app`이며, 앱 주소는 **https://moment-app-theta.vercel.app/** 입니다. 빌드 과정 없이 HTML 파일을 제공하도록 `vercel.json`에 설정되어 있습니다.
 
-현재 Vercel 배포는 CLI로 수행합니다. Vercel CLI 설치와 로그인, 프로젝트 연결이 완료된 이 프로젝트 폴더에서 다음 명령을 실행하면 수정한 앱을 배포할 수 있습니다.
+**GitHub 자동 배포 연결이 완료되어 있습니다.** `ssinmia-bit/moment-app` 저장소의 `main` 브랜치에 푸시하면 Vercel이 변경 내용을 가져와 프로덕션 사이트를 업데이트합니다. 평소에는 위의 `git add` → `git commit` → `git push` 순서만 진행하면 됩니다.
+
+필요하다면 CLI로 직접 배포할 수도 있습니다. Vercel CLI 설치와 로그인, 프로젝트 연결이 완료된 이 프로젝트 폴더에서 실행하세요.
 
 ```powershell
 vercel deploy --prod
 ```
 
-GitHub에 푸시하는 것과 Vercel CLI로 배포하는 것은 별도 작업입니다. GitHub 자동 배포를 사용하려면 Vercel 계정 설정의 **Login Connections**에서 GitHub 계정을 연결한 뒤, 다음 명령으로 저장소도 연결해야 합니다. Vercel GitHub 앱의 저장소 접근 권한 승인이 추가로 필요할 수 있습니다.
-
-```powershell
-vercel git connect https://github.com/ssinmia-bit/moment-app --yes
-```
-
-연결 완료 후에는 `main` 브랜치에 푸시할 때 Vercel 프로덕션 배포도 자동으로 실행됩니다. Vercel의 로컬 프로젝트 설정과 환경 변수 파일은 `.gitignore` 및 `.vercelignore`로 업로드에서 제외합니다.
+저장소 접근은 GitHub에 설치한 Vercel 앱으로 허용합니다. 연결이나 권한을 해제하면 자동 배포가 중단될 수 있습니다. Vercel의 로컬 프로젝트 설정과 환경 변수 파일은 `.gitignore` 및 `.vercelignore`로 업로드에서 제외합니다.
 
 ## ❓ 자주 묻는 질문
 
